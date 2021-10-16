@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "727339109856",
+    "project_id": "guessy-a3ba6",
+    "storage_bucket": "guessy-a3ba6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727339109856:android:2bb5ffdc60bc8022ffef85",
+        "android_client_info": {
+          "package_name": "com.daemoryn.guessy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727339109856-9602u13s6ldvqgkjsitnoe6tdcm8etb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC06yx18aMPwOULoy38XslshQU2iGwE5jM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727339109856-9602u13s6ldvqgkjsitnoe6tdcm8etb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
