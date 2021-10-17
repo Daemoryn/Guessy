@@ -15,38 +15,46 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    primary: Colors.black87,
+    minimumSize: const Size(88, 36),
+    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomLeft,
-              colors: [
-                Color(0xFFFFA450),
-                Color(0xFFFF5656),
-              ],
-            ),
-          ),
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 50),
-                child: Image.asset(
-                  'assets/logo_transparent.png',
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  height: MediaQuery.of(context).size.width * 0.815,
-                  fit: BoxFit.cover,
-                ),
+        child: SingleChildScrollView(
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Color(0xFFFFA450),
+                  Color(0xFFFF5656),
+                ],
               ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: const Text(
+            ),
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 45),
+                  child: Image.asset(
+                    'assets/logo_transparent.png',
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    height: MediaQuery.of(context).size.width * 0.815,
+                    // fit: BoxFit.cover,
+                  ),
+                ),
+                const Center(
+                  child: Text(
                     'Welcome in Guessy!',
                     style: TextStyle(
                       fontSize: 30.0,
@@ -55,8 +63,69 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40.0),
+                          topRight: Radius.circular(40.0),
+                        ),
+                      ),
+                      margin: const EdgeInsets.only(
+                        top: 15,
+                      ),
+                      padding: const EdgeInsets.only(top: 26),
+                      child: Column(
+                        children: [
+                          Center(
+                            child: Container(
+                              margin: const EdgeInsets.only(bottom: 15),
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  "Add question",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  onPrimary: const Color(0xFFFFA450),
+                                  textStyle: const TextStyle(fontSize: 20.0),
+                                  primary: const Color(0xFFFF5656),
+                                  fixedSize: const Size(300, 50),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: const Text(
+                                "Play",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                onPrimary: const Color(0xFFFFA450),
+                                textStyle: const TextStyle(fontSize: 20.0),
+                                primary: const Color(0xFFFF5656),
+                                fixedSize: const Size(300, 50),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
