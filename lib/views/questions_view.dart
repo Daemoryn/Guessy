@@ -52,7 +52,6 @@ class _QuestionsViewState extends State<QuestionsView> {
         ),
       ),
       body: Container(
-        // height: MediaQuery.of(context).size.height * 1.1,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,

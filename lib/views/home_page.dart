@@ -139,7 +139,6 @@ class _HomePageState extends State<HomePage> {
                                 bottom: 2,
                                 child: Flexible(
                                   child: Align(
-                                    // alignment: Alignment.bottomCenter,
                                     child: Container(
                                       decoration: const BoxDecoration(
                                         color: Colors.white,
