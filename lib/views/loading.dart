@@ -5,15 +5,9 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          "Loading...",
-          style: TextStyle(
-            fontSize: 30,
-            color: Color(0xFFFFA450),
-          ),
-        ),
+    return const Center(
+      child: CircularProgressIndicator(
+        backgroundColor: Color(0xFFFFA450),
       ),
     );
   }

@@ -13,7 +13,7 @@ class ImageFirebaseProvider{
     try{
       await _firebaseStorageRepository.uploadImage(basename(image.path), image);
     } catch (e){
-      print(e.toString());
+      // print(e.toString());
     }
   }
 

@@ -7,11 +7,13 @@ class QuestionsFirebaseProvider {
 
   Future<List<Question>> getAllQuestions() async {
     return await _repository.getAllQuestions().then(
-            (value) => value.docs.map((e) => Question.fromJson(e.data() as Map<String, dynamic>)).toList());
+            (value) => value.docs.map((e) => Question.fromJson(e.data() as Map<String, dynamic>)).toList())
+        .catchError((e) {print(e.toString());});
   }
 
   Future<List<Question>> getQuestionsFromTheme(String theme) async {
     if (theme == Constants.general_theme) {
+      print(theme);
       return getAllQuestions();
     }
     return await _repository.getQuestionsFromTheme(theme).then(

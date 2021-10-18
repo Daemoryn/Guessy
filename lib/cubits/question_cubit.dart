@@ -4,7 +4,6 @@ import 'package:guessy/utils/triplet.dart';
 import 'package:guessy/data/model/question.dart';
 
 class QuestionCubit extends Cubit<Triplet<Question, int, int>> {
-  //Une question par défaut car quelques fois le bloc cubit est appelé alors que la requête n'est pas terminée
   List<Question> _questions = [
     Question("Paris est-elle la capitale de la France ?",
         "images/tour-eiffel-paris.jpg",
@@ -21,10 +20,8 @@ class QuestionCubit extends Cubit<Triplet<Question, int, int>> {
     _sendQuestion();
   }
 
-
   set questions(List<Question> value) {
     _questions = value;
-    print(questions.length);
     _sendQuestion();
   }
 
@@ -40,14 +37,14 @@ class QuestionCubit extends Cubit<Triplet<Question, int, int>> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(flag
               ? "Vous avez trouvé une bonne réponse!"
-              : "C'est dommage ..."),
+              : "C'est dommage..."),
           duration: const Duration(milliseconds: 2000)));
       changeQuestion(flag, context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content:
           Text('Vous avez terminé le jeu avec un score de $_nbgoodanswer!'),
-          duration: const Duration(milliseconds: 2000)));
+          duration: const Duration(milliseconds: 3000)));
     }
   }
 
@@ -59,7 +56,7 @@ class QuestionCubit extends Cubit<Triplet<Question, int, int>> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
                 'Vous avez terminé le jeu avec un score de $_nbgoodanswer!'),
-            duration: const Duration(milliseconds: 500)));
+            duration: const Duration(milliseconds: 3000)));
       }
       _sendQuestion();
     } else {
@@ -68,7 +65,7 @@ class QuestionCubit extends Cubit<Triplet<Question, int, int>> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content:
           Text('Vous avez terminé le jeu avec un score de $_nbgoodanswer!'),
-          duration: const Duration(milliseconds: 500),
+          duration: const Duration(milliseconds: 3000),
         ));
       }
       _sendQuestion();
@@ -76,7 +73,7 @@ class QuestionCubit extends Cubit<Triplet<Question, int, int>> {
   }
 
   void _sendQuestion() {
-    print(_questions.length);
+    // print(_questions.length);
     if (_nbquestion < _questions.length) {
       emit(Triplet(_questions[_nbquestion], _nbgoodanswer, _nbquestion));
     } else {

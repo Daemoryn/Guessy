@@ -53,21 +53,23 @@ class _HomePageState extends State<HomePage> {
               return (stateGameOn)
                   ? goToGame()
                   : Center(
-                      child: SingleChildScrollView(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.height,
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomLeft,
-                              colors: [
-                                Color(0xFFFFA450),
-                                Color(0xFFFF5656),
-                              ],
-                            ),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Color(0xFFFFA450),
+                              Color(0xFFFF5656),
+                            ],
                           ),
+                        ),
+                        child: SingleChildScrollView(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Container(
                                 margin: const EdgeInsets.only(top: 45),
@@ -133,36 +135,62 @@ class _HomePageState extends State<HomePage> {
                                     }
                                     return const Loading();
                                   }),
-                              Expanded(
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(40.0),
-                                        topRight: Radius.circular(40.0),
+                              Positioned(
+                                bottom: 2,
+                                child: Flexible(
+                                  child: Align(
+                                    // alignment: Alignment.bottomCenter,
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(40.0),
+                                          topRight: Radius.circular(40.0),
+                                        ),
                                       ),
-                                    ),
-                                    margin: const EdgeInsets.only(
-                                      top: 15,
-                                    ),
-                                    padding: const EdgeInsets.only(top: 26),
-                                    child: Column(
-                                      children: [
-                                        Center(
-                                          child: Container(
-                                            margin: const EdgeInsets.only(bottom: 15),
+                                      margin: const EdgeInsets.only(
+                                        top: 194,
+                                      ),
+                                      padding: const EdgeInsets.only(top: 26,
+                                      bottom: 26),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Center(
+                                            child: Container(
+                                              margin: const EdgeInsets.only(bottom: 15),
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) => const AddQuestion()),
+                                                  );
+                                                },
+                                                child: const Text(
+                                                  "Add question",
+                                                  style: TextStyle(color: Colors.white),
+                                                ),
+                                                style: ElevatedButton.styleFrom(
+                                                  onPrimary: const Color(0xFFFFA450),
+                                                  textStyle: const TextStyle(fontSize: 20.0),
+                                                  primary: const Color(0xFFFF5656),
+                                                  fixedSize: const Size(300, 50),
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(50),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
                                             child: ElevatedButton(
                                               onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) => const AddQuestion()),
-                                                );
+                                                context.read<GameOnCubit>().changeState();
                                               },
                                               child: const Text(
-                                                "Add question",
+                                                "Play",
                                                 style: TextStyle(color: Colors.white),
                                               ),
                                               style: ElevatedButton.styleFrom(
@@ -176,28 +204,8 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Center(
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              context.read<GameOnCubit>().changeState();
-                                            },
-                                            child: const Text(
-                                              "Play",
-                                              style: TextStyle(color: Colors.white),
-                                            ),
-                                            style: ElevatedButton.styleFrom(
-                                              onPrimary: const Color(0xFFFFA450),
-                                              textStyle: const TextStyle(fontSize: 20.0),
-                                              primary: const Color(0xFFFF5656),
-                                              fixedSize: const Size(300, 50),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(50),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -217,12 +217,12 @@ class _AddQuestionState extends State<AddQuestion> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      print(_questionController.text);
+                                      // print(_questionController.text);
                                       if (_questionController.text != "" &&
                                           state != null &&
                                           _themeController.text != "") {
                                         _imageFirebaseProvider.uploadImage(state).then((value) {
-                                          print("Je suis ici 2");
+                                          // print("Je suis ici 2");
                                           _questionsFirebaseProvider
                                               .addQuestion(Question(
                                                   _questionController.text,
