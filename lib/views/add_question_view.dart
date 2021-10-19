@@ -10,19 +10,6 @@ import 'package:provider/provider.dart';
 import 'package:guessy/data/provider/image_provider.dart';
 import 'package:guessy/data/provider/questions_firebase_provider.dart';
 import 'dart:async';
-import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
-
-export 'package:image_picker_platform_interface/image_picker_platform_interface.dart'
-    show
-        kTypeImage,
-        kTypeVideo,
-        ImageSource,
-        CameraDevice,
-        LostData,
-        LostDataResponse,
-        PickedFile,
-        XFile,
-        RetrieveType;
 
 class AddQuestion extends StatefulWidget {
   const AddQuestion({Key? key}) : super(key: key);
@@ -38,7 +25,6 @@ class _AddQuestionState extends State<AddQuestion> {
   final QuestionsFirebaseProvider _questionsFirebaseProvider = QuestionsFirebaseProvider();
 
   final ImageFirebaseProvider _imageFirebaseProvider = ImageFirebaseProvider();
-  final ImagePicker _picker = ImagePicker();
   late File _image;
 
   @override
@@ -63,7 +49,7 @@ class _AddQuestionState extends State<AddQuestion> {
         child: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height * 1.63,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -165,6 +151,8 @@ class _AddQuestionState extends State<AddQuestion> {
                                 right: 30,
                               ),
                               child: Column(
+                                // mainAxisAlignment: MainAxisAlignment.start,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   (state != null)
                                       ? ElevatedButton(
@@ -217,12 +205,10 @@ class _AddQuestionState extends State<AddQuestion> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      // print(_questionController.text);
                                       if (_questionController.text != "" &&
                                           state != null &&
                                           _themeController.text != "") {
                                         _imageFirebaseProvider.uploadImage(state).then((value) {
-                                          // print("Je suis ici 2");
                                           _questionsFirebaseProvider
                                               .addQuestion(Question(
                                                   _questionController.text,
@@ -269,15 +255,12 @@ class _AddQuestionState extends State<AddQuestion> {
   }
 
   Future _imgFromGallery(BuildContext context) async {
-    File image = await _picker.getImage(source: ImageSource.gallery) as File;
-    setState(() {
-      _image = File(image.path);
-    });
-    context.read<ImageCubit>().sendCorrectImage(_image);
+    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    context.read<ImageCubit>().sendCorrectImage(image);
   }
 
   Future _imgFromCamera(BuildContext context) async {
-    File photo = await _picker.pickImage(source: ImageSource.camera) as File;
+    File photo = await ImagePicker.pickImage(source: ImageSource.camera);
     context.read<ImageCubit>().sendCorrectImage(photo);
   }
 

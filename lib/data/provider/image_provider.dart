@@ -16,5 +16,4 @@ class ImageFirebaseProvider{
       // print(e.toString());
     }
   }
-
 }

@@ -135,61 +135,37 @@ class _HomePageState extends State<HomePage> {
                                     }
                                     return const Loading();
                                   }),
-                              Positioned(
-                                bottom: 2,
-                                child: Flexible(
-                                  child: Align(
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(40.0),
-                                          topRight: Radius.circular(40.0),
-                                        ),
+                              Flexible(
+                                child: Align(
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(40.0),
+                                        topRight: Radius.circular(40.0),
                                       ),
-                                      margin: const EdgeInsets.only(
-                                        top: 194,
-                                      ),
-                                      padding: const EdgeInsets.only(top: 26,
-                                      bottom: 26),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Center(
-                                            child: Container(
-                                              margin: const EdgeInsets.only(bottom: 15),
-                                              child: ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) => const AddQuestion()),
-                                                  );
-                                                },
-                                                child: const Text(
-                                                  "Add question",
-                                                  style: TextStyle(color: Colors.white),
-                                                ),
-                                                style: ElevatedButton.styleFrom(
-                                                  onPrimary: const Color(0xFFFFA450),
-                                                  textStyle: const TextStyle(fontSize: 20.0),
-                                                  primary: const Color(0xFFFF5656),
-                                                  fixedSize: const Size(300, 50),
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(50),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Center(
+                                    ),
+                                    margin: const EdgeInsets.only(
+                                      top: 194,
+                                    ),
+                                    padding: const EdgeInsets.only(top: 26, bottom: 26),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Center(
+                                          child: Container(
+                                            margin: const EdgeInsets.only(bottom: 15),
                                             child: ElevatedButton(
                                               onPressed: () {
-                                                context.read<GameOnCubit>().changeState();
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) => const AddQuestion()),
+                                                );
                                               },
                                               child: const Text(
-                                                "Play",
+                                                "Add question",
                                                 style: TextStyle(color: Colors.white),
                                               ),
                                               style: ElevatedButton.styleFrom(
@@ -203,8 +179,28 @@ class _HomePageState extends State<HomePage> {
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        Center(
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              context.read<GameOnCubit>().changeState();
+                                            },
+                                            child: const Text(
+                                              "Play",
+                                              style: TextStyle(color: Colors.white),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                              onPrimary: const Color(0xFFFFA450),
+                                              textStyle: const TextStyle(fontSize: 20.0),
+                                              primary: const Color(0xFFFF5656),
+                                              fixedSize: const Size(300, 50),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(50),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
