@@ -40,9 +40,15 @@ class _QuestionsViewState extends State<QuestionsView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFFFFA450),
-        title: const Text(
-          "Guessy",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        title: Center(
+          child: Container(
+            margin: const EdgeInsets.only(
+                right: 50),
+            child: const Text(
+              "Guessy",
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30),
+            ),
+          ),
         ),
         leading: IconButton(
           icon: const FaIcon(FontAwesomeIcons.chevronLeft, color: Colors.black),
