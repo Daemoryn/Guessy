@@ -21,6 +21,7 @@ dependencies:
   firebase_storage: ^10.0.5
   image_picker: ^0.6.2+3
   font_awesome_flutter: ^9.1.0
+  shared_preferences: ^2.0.8
 
 
 dev_dependencies:
